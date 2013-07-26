@@ -1,10 +1,11 @@
-﻿<xapCache source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="26.7.2013 22:29:16">
+﻿<xapCache source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="26.7.2013 23:18:44">
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="26.7.2013 17:24:42" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Background.png" archivePath="Background.png" lastWriteTime="26.7.2013 17:12:00" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="26.7.2013 17:12:00" />
-  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.dll" archivePath="planes.dll" lastWriteTime="26.7.2013 22:29:14" />
+  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.dll" archivePath="planes.dll" lastWriteTime="26.7.2013 23:18:42" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\planesLib.dll" archivePath="planesLib.dll" lastWriteTime="26.7.2013 17:24:35" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="26.7.2013 20:30:27" />
+  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\titlescreen.png" archivePath="titlescreen.png" lastWriteTime="26.7.2013 23:16:27" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="26.7.2013 17:24:42" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\background_day.xnb" archivePath="Content\Images\Backgrounds\background_day.xnb" lastWriteTime="26.7.2013 17:49:18" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\background_night.xnb" archivePath="Content\Images\Backgrounds\background_night.xnb" lastWriteTime="26.7.2013 17:49:18" />
