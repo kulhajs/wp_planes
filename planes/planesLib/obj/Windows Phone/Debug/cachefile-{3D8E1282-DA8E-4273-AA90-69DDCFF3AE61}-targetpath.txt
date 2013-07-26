@@ -1,2 +1,6 @@
 Content\Images\Backgrounds\background_day.xnb
 Content\Images\Backgrounds\background_night.xnb
+Content\Images\planes.xnb
+Content\Images\ammo.xnb
+Content\Images\bomb.xnb
+Content\Images\bullet.xnb

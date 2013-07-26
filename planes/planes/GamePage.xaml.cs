@@ -21,6 +21,8 @@ namespace planes
         GameTimer timer;
         SpriteBatch spriteBatch;
 
+        Player player;
+
         Background background;
 
         public GamePage()
@@ -36,6 +38,7 @@ namespace planes
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
 
+            player = new Player();
             background = new Background();
         }
 
@@ -48,6 +51,7 @@ namespace planes
             spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
 
             // TODO: use this.content to load your game content here
+            player.LoadContent(contentManager);
             background.LoadContent(contentManager);
 
             // Start the timer
@@ -74,6 +78,7 @@ namespace planes
         private void OnUpdate(object sender, GameTimerEventArgs e)
         {
             // TODO: Add your update logic here
+            player.Update();
             background.Scroll((float)timer.UpdateInterval.TotalSeconds/*, player*/);
         }
 
@@ -87,6 +92,7 @@ namespace planes
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             background.Draw(spriteBatch);
+            player.Draw(spriteBatch);
             spriteBatch.End();
         }
     }

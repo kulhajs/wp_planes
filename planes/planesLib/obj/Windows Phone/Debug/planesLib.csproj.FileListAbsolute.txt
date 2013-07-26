@@ -6,3 +6,7 @@ C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debu
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debug\planesLib.pdb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\background_day.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\background_night.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\planes.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\ammo.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\bomb.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\bullet.xnb

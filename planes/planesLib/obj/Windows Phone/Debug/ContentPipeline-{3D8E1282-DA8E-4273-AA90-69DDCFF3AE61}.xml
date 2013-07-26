@@ -19,6 +19,42 @@
       <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\background_night.xnb</Output>
       <Time>2013-07-26T17:35:16.3224154+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\planes.png</Source>
+      <Name>Images\planes</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\planes.xnb</Output>
+      <Time>2013-07-26T18:00:12.7395733+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\ammo.png</Source>
+      <Name>Images\ammo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\ammo.xnb</Output>
+      <Time>2013-07-26T18:00:52.194639+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\bomb.png</Source>
+      <Name>Images\bomb</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\bomb.xnb</Output>
+      <Time>2013-07-26T18:00:52.1996406+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\bullet.png</Source>
+      <Name>Images\bullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\bullet.xnb</Output>
+      <Time>2013-07-26T18:00:52.2036408+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{3D8E1282-DA8E-4273-AA90-69DDCFF3AE61}</ContentProjectGUID>

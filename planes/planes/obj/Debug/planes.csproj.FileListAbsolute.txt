@@ -16,3 +16,7 @@ C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.pdb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\XapCacheFile.xml
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\background_day.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\background_night.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\planes.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\ammo.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\bomb.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\bullet.xnb
