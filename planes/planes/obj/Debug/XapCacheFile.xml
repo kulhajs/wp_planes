@@ -1,8 +1,8 @@
-﻿<xapCache source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="26.7.2013 19:47:33">
+﻿<xapCache source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="26.7.2013 20:01:42">
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="26.7.2013 17:24:42" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Background.png" archivePath="Background.png" lastWriteTime="26.7.2013 17:12:00" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="26.7.2013 17:12:00" />
-  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.dll" archivePath="planes.dll" lastWriteTime="26.7.2013 19:47:31" />
+  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.dll" archivePath="planes.dll" lastWriteTime="26.7.2013 20:01:41" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\planesLib.dll" archivePath="planesLib.dll" lastWriteTime="26.7.2013 17:24:35" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="26.7.2013 17:12:00" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="26.7.2013 17:24:42" />
@@ -15,6 +15,7 @@
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Sounds\browning.xnb" archivePath="Content\Sounds\browning.xnb" lastWriteTime="26.7.2013 18:41:09" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\explosion.xnb" archivePath="Content\Images\explosion.xnb" lastWriteTime="26.7.2013 19:25:55" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Sounds\explosion.xnb" archivePath="Content\Sounds\explosion.xnb" lastWriteTime="26.7.2013 19:28:52" />
+  <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\healthbar.xnb" archivePath="Content\Images\healthbar.xnb" lastWriteTime="26.7.2013 19:56:51" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="26.7.2013 17:12:00" />
   <file source="C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="26.7.2013 17:12:00" />
 </xapCache>

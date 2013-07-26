@@ -34,8 +34,8 @@ namespace planes
         Accelerometer accelerometer;
         TouchCollection tc;
 
-        //Bar healthBar;
-        //Bar ammoBar;
+        Bar healthBar;
+        Bar ammoBar;
         //public ScoreHandler score;
 
         public ExplosionHandler eh = new ExplosionHandler();
@@ -69,8 +69,8 @@ namespace planes
 
 
             this.AvailibleBombs = maxBombs;
-            //healthBar = new Bar(Color.Red, new Vector2(25,323));
-            //ammoBar = new Bar(Color.Gold, new Vector2(25,338));
+            healthBar = new Bar(Color.Red, new Vector2(25, 448));
+            ammoBar = new Bar(Color.Gold, new Vector2(25, 458));
             //score = new ScoreHandler();
 
             accelerometer = new Accelerometer();
@@ -112,8 +112,8 @@ namespace planes
             this.contentManager = theContentManager;
             browning = contentManager.Load<SoundEffect>("Sounds/browning");
             //mg = contentManager.Load<SoundEffect>("Sounds/mg");
-            //healthBar.LoadContent(contentManager);
-            //ammoBar.LoadContent(contentManager);
+            healthBar.LoadContent(contentManager);
+            ammoBar.LoadContent(contentManager);
             //score.LoadContent(contentManager);
 
             //font = contentManager.Load<SpriteFont>("Fonts/font");
@@ -237,8 +237,8 @@ namespace planes
 
                 this.Y += 5f * this.Rotation;
 
-                //healthBar.FilledWidth = this.Hitpoints * healthBar.W / maxHealth;
-                //ammoBar.FilledWidth = this.Ammo * ammoBar.W / maxAmmo;
+                healthBar.FilledWidth = this.Hitpoints * healthBar.W / maxHealth;
+                ammoBar.FilledWidth = this.Ammo * ammoBar.W / maxAmmo;
 
                 this.Animate();
             }
@@ -297,8 +297,8 @@ namespace planes
 
             eh.Draw(theSpriteBatch);
 
-                foreach (Bullet b in bullets)
-                    b.Draw(theSpriteBatch);
+            foreach (Bullet b in bullets)
+                b.Draw(theSpriteBatch);
             //foreach (Bomb b in bombs)
             //    b.Draw(theSpriteBatch);
 
@@ -311,8 +311,8 @@ namespace planes
             //theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(748, 323), Color.Black);
             //theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(746, 323), Color.LightGray);
 
-            //healthBar.Draw(theSpriteBatch);
-            //ammoBar.Draw(theSpriteBatch);
+            healthBar.Draw(theSpriteBatch);
+            ammoBar.Draw(theSpriteBatch);
             //score.DrawScore(theSpriteBatch);
         }
 
