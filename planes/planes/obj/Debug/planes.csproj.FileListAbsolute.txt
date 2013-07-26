@@ -1,0 +1,16 @@
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\ApplicationIcon.png
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Background.png
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.dll
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.pdb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\AppManifest.xaml
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planes.xap
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planesLib.dll
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\planesLib.pdb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.csprojResolveAssemblyReference.cache
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\App.g.cs
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\GamePage.g.cs
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\MainPage.g.cs
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.g.resources
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.dll
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\planes.pdb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\obj\Debug\XapCacheFile.xml
