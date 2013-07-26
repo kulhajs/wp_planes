@@ -86,13 +86,13 @@ namespace planes
                 animate[i] = 1;
         }
 
-        public void Update(GameTimer timer/*, PowerupHandler pu */, ContentManager theContentManager, Player player, bool soundsMuted)
+        public void Update(GameTimer timer, PowerupHandler pu , ContentManager theContentManager, Player player, bool soundsMuted)
         {
             this.Position += direction * velocity * (float)timer.UpdateInterval.TotalSeconds;
 
             if (this.Hitpoints < 1 && !ExplosionCreated)
             {
-                //this.GeneratePowerups(pu, theContentManager);
+                this.GeneratePowerups(pu, theContentManager);
 
                 this.IsAlive = false;
                 explosionHandler.CreateExplosion("normal", new Vector2(this.X - 47, this.Y - 87), contentManager);
@@ -128,20 +128,20 @@ namespace planes
             this.Animate(player);
         }
 
-        //private void GeneratePowerups(PowerupHandler pu, ContentManager theContentManager)
-        //{
-        //    int x = random.Next(0, 7);
+        private void GeneratePowerups(PowerupHandler pu, ContentManager theContentManager)
+        {
+            int x = random.Next(0, 7);
 
-        //    if (x == 1)
-        //        pu.CreatePowerup(new Vector2(this.X - 50, this.Y - 100), theContentManager, "health");
-        //    else if (x == 2)
-        //        pu.CreatePowerup(new Vector2(random.Next(810, 900), random.Next(20, 300)), theContentManager, "ten");
-        //    else if (x == 3)
-        //        pu.CreatePowerup(new Vector2(this.X - 50, this.Y - 100), theContentManager, "ammo");
+            if (x == 1)
+                pu.CreatePowerup(new Vector2(this.X - 50, this.Y - 100), theContentManager, "health");
+            else if (x == 2)
+                pu.CreatePowerup(new Vector2(random.Next(810, 900), random.Next(20, 300)), theContentManager, "ten");
+            else if (x == 3)
+                pu.CreatePowerup(new Vector2(this.X - 50, this.Y - 100), theContentManager, "ammo");
 
-        //    if (random.Next(30) == 13)
-        //        pu.CreatePowerup(new Vector2(random.Next(810, 900), random.Next(20, 300)), theContentManager, "bomb");
-        //}
+            if (random.Next(30) == 13)
+                pu.CreatePowerup(new Vector2(random.Next(810, 900), random.Next(20, 300)), theContentManager, "bomb");
+        }
 
         private void Animate(Player player)
         {

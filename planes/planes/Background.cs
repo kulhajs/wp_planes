@@ -22,7 +22,7 @@ namespace planes
         int period = 0;
 
         //Song backgroundSong;
-        //SpriteFont font; 
+        SpriteFont font; 
 
         public Texture2D background;
 
@@ -46,7 +46,7 @@ namespace planes
                 background = contentManager.Load<Texture2D>(day);
             
            // backgroundSong = contentManager.Load<Song>("Sounds/backgroundMusic");
-           // font = contentManager.Load<SpriteFont>("Fonts/font");
+            font = contentManager.Load<SpriteFont>("Fonts/font");
         }
 
         //public void PlaySong()
@@ -92,8 +92,8 @@ namespace planes
         {
             theSpriteBatch.Draw(background, this.Position + new Vector2((period) * background.Width, 0), new Rectangle(0, 0, background.Width, background.Height), this.Color, this.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
             theSpriteBatch.Draw(background, this.Position + new Vector2((period + 1) * background.Width, 0), new Rectangle(0, 0, background.Width, background.Height), this.Color, this.Rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
-           // theSpriteBatch.DrawString(font, string.Format("Level: {0}", this.period), new Vector2(692, 10), Color.Black);
-          //  theSpriteBatch.DrawString(font, string.Format("Level: {0}", this.period), new Vector2(690, 10), Color.LightGray);
+            theSpriteBatch.DrawString(font, string.Format("Level: {0}", this.period), new Vector2(402 - 55, 10), Color.Black);
+            theSpriteBatch.DrawString(font, string.Format("Level: {0}", this.period), new Vector2(400 - 55, 10), Color.LightGray);
         }
     }
 }

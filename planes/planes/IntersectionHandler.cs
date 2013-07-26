@@ -17,7 +17,6 @@ namespace planes
         Random random = new Random();
 
         Rectangle playerRectangle;
-        Rectangle terrainRectangle;
         Rectangle enemyRectangle;
         Rectangle bulletRectangle;
         Rectangle powerupRectangle;
@@ -27,72 +26,62 @@ namespace planes
         private bool bulletRemoved = false;
         private bool bombRemoved = false;
 
-        //public void HandleTerrainIntersections(Terrain terrain, Player player)
-        //{
-        //    playerRectangle = new Rectangle((int)player.X + player.W / 2, (int)player.Y + player.H / 4, player.W / 4, player.H / 2);
-        //    terrainRectangle = terrain.TerrainRectangle();
-        //    if (playerRectangle.Intersects(terrainRectangle))
-        //    {
-        //        player.IsAlive = false;
-        //    }
-        //}
+        public void HandlePowerupIntersections(PowerupHandler pu, Player player)
+        {
+            playerRectangle = new Rectangle((int)player.X - player.W / 2, (int)player.Y - player.H / 2, player.W, player.H);
+            foreach (Powerup p in pu.powerups)
+            {
+                powerupRectangle = new Rectangle((int)p.X, (int)p.Y, p.W, p.H);
+                if (playerRectangle.Intersects(powerupRectangle))
+                {
+                    if (p.Type == "health")
+                    {
+                        if (player.Hitpoints + 5 < player.MaxHealth)
+                            player.Hitpoints += 5;
+                        else
+                        {
+                            if (player.healthPowerups.Count < 5)
+                            {
+                                p.Source = new Rectangle(0, 0, p.W, p.H);
+                                p.Position = new Vector2(20 + player.healthPowerups.Count * 40, 20);
+                                p.Scale = 2f;
+                                player.healthPowerups.Add(p);
+                            }
+                            else
+                                player.Hitpoints = player.MaxHealth;
+                        }
+                    }
+                    else if (p.Type == "ammo")
+                    {
+                        if (player.Ammo + 50 < player.MaxAmmo)
+                            player.Ammo += 50;
+                        else
+                        {
+                            if (player.ammoPowerups.Count < 5)
+                            {
+                                p.Source = new Rectangle(0, 0, p.W, p.H);
+                                p.Position = new Vector2(106 + player.ammoPowerups.Count * 18, 335);
+                                p.Scale = 0.75f;
+                                player.ammoPowerups.Add(p);
+                            }
+                            else
+                                player.Ammo = player.MaxAmmo;
+                        }
+                    }
+                    else if (p.Type == "ten")
+                    {
+                        //player.score.AddPoints(10);
+                    }
+                    else if (p.Type == "bomb" && player.AvailibleBombs + 1 <= 2)
+                    {
+                        player.AvailibleBombs += 1;
+                    }
 
-        //public void HandlePowerupIntersections(PowerupHandler pu, Player player)
-        //{
-        //    playerRectangle = new Rectangle((int)player.X - player.W / 2, (int)player.Y - player.H / 2, player.W, player.H);
-        //    foreach (Powerup p in pu.powerups)
-        //    {
-        //        powerupRectangle = new Rectangle((int)p.X, (int)p.Y, p.W, p.H);
-        //        if (playerRectangle.Intersects(powerupRectangle))
-        //        {
-        //            if (p.Type == "health")
-        //            {
-        //                if (player.Hitpoints + 5 < player.MaxHealth)
-        //                    player.Hitpoints += 5;
-        //                else
-        //                {
-        //                    if (player.healthPowerups.Count < 5)
-        //                    {
-        //                        p.Source = new Rectangle(0, 0, p.W, p.H);
-        //                        p.Position = new Vector2(106 + player.healthPowerups.Count * 18, 320);
-        //                        p.Scale = 0.75f;
-        //                        player.healthPowerups.Add(p);
-        //                    }
-        //                    else
-        //                        player.Hitpoints = player.MaxHealth;
-        //                }
-        //            }
-        //            else if (p.Type == "ammo")
-        //            {
-        //                if (player.Ammo + 50 < player.MaxAmmo)
-        //                    player.Ammo += 50;
-        //                else
-        //                {
-        //                    if (player.ammoPowerups.Count < 5)
-        //                    {
-        //                        p.Source = new Rectangle(0, 0, p.W, p.H);
-        //                        p.Position = new Vector2(106 + player.ammoPowerups.Count * 18, 335);
-        //                        p.Scale = 0.75f;
-        //                        player.ammoPowerups.Add(p);
-        //                    }
-        //                    else
-        //                        player.Ammo = player.MaxAmmo;
-        //                }
-        //            }
-        //            else if (p.Type == "ten")
-        //            {
-        //                player.score.AddPoints(10);
-        //            }
-        //            else if (p.Type == "bomb" && player.AvailibleBombs + 1 <= 2)
-        //            {
-        //                    player.AvailibleBombs += 1;
-        //            }
-
-        //            pu.powerups.Remove(p);
-        //            break;
-        //        }
-        //    }
-        //}
+                    pu.powerups.Remove(p);
+                    break;
+                }
+            }
+        }
 
         public void HandleBulletIntersections(EnemyHandler eh, Player p, ContentManager contentManager)
         {

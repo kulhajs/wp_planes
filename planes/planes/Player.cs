@@ -28,8 +28,8 @@ namespace planes
         SoundEffect browning;
         //SoundEffect mg;
 
-        //SpriteFont font;
-        //Texture2D bombTexture;
+        SpriteFont font;
+        Texture2D bombTexture;
 
         Accelerometer accelerometer;
         TouchCollection tc;
@@ -41,9 +41,9 @@ namespace planes
         public ExplosionHandler eh = new ExplosionHandler();
 
         public List<Bullet> bullets = new List<Bullet>();
-        //public List<Bomb> bombs = new List<Bomb>();
-        //public List<Powerup> healthPowerups = new List<Powerup>();
-        //public List<Powerup> ammoPowerups = new List<Powerup>();
+        public List<Bomb> bombs = new List<Bomb>();
+        public List<Powerup> healthPowerups = new List<Powerup>();
+        public List<Powerup> ammoPowerups = new List<Powerup>();
 
         Rectangle[] sources = new Rectangle[]{
             new Rectangle(4,9,w,h),
@@ -96,6 +96,10 @@ namespace planes
 
         private bool fireTouch = false;
 
+        private bool currentBombTouch = false;
+
+        private bool oldBombTouch = false;
+
         public int W {
             get { return w; }
         } 
@@ -116,8 +120,8 @@ namespace planes
             ammoBar.LoadContent(contentManager);
             //score.LoadContent(contentManager);
 
-            //font = contentManager.Load<SpriteFont>("Fonts/font");
-            //bombTexture = contentManager.Load<Texture2D>("Images/bomb");
+            font = contentManager.Load<SpriteFont>("Fonts/font");
+            bombTexture = contentManager.Load<Texture2D>("Images/bomb");
 
             base.LoadContent(contentManager, assetName);
             this.Source = sources[0 + this.Nation];
@@ -169,14 +173,20 @@ namespace planes
         public void Update(GameTimer timer, bool soundMuted)
         {
             fireTouch = false;
+            currentBombTouch = false;
             tc = TouchPanel.GetState();
             if (tc.Count > 0)
                 foreach (TouchLocation tl in tc)
+                {
                     if (tl.Position.X > 300)
                     {
                         fireTouch = true;
-                        break;
+                    } 
+                    else if(tl.Position.X < 150 && tl.Position.Y > 240 && !currentBombTouch)
+                    {
+                        currentBombTouch = true;
                     }
+                }
 
             if (!this.IsAlive && !explosionCreated && !this.Crash)
             {
@@ -206,13 +216,13 @@ namespace planes
                         browning.Play(0.5f, 0, 0);
                     this.Ammo -= 1;
                 }
-                //else if (currentKeyboardState.IsKeyDown(Keys.LeftControl) && !oldKeyboardState.IsKeyDown(Keys.LeftControl) && this.AvailibleBombs > 0)
-                //{
-                //    Bomb newBomb = new Bomb(this.Position);
-                //    newBomb.LoadContent(contentManager);
-                //    bombs.Add(newBomb);
-                //    AvailibleBombs--;
-                //}
+                else if (currentBombTouch && !oldBombTouch && this.AvailibleBombs > 0)
+                {
+                    Bomb newBomb = new Bomb(this.Position);
+                    newBomb.LoadContent(contentManager);
+                    bombs.Add(newBomb);
+                    AvailibleBombs--;
+                }
 
                 //if (currentKeyboardState.IsKeyDown(Keys.A) && !oldKeyboardState.IsKeyDown(Keys.A) && this.healthPowerups.Count > 0)
                 //{
@@ -253,18 +263,20 @@ namespace planes
                 }
             }
 
-            //foreach (Bomb b in bombs)
-            //{
-            //    b.Update(theGameTime);
-            //    if (b.Position.Y > 315)
-            //    {
-            //        eh.CreateExplosion("normal", b.Position, contentManager);
-            //        bombs.Remove(b);
-            //        break;
-            //    }
-            //}
+            foreach (Bomb b in bombs)
+            {
+                b.Update(timer);
+                if (b.Position.Y > 445)
+                {
+                    eh.CreateExplosion("normal", b.Position, contentManager);
+                    bombs.Remove(b);
+                    break;
+                }
+            }
 
             eh.Update(timer, this.IsAlive, soundMuted); //if palyer dies background stops so explosion can't move away, on the other hand when bomb lands explosion has to go off the screen
+
+            oldBombTouch = currentBombTouch;
 
             if (this.Hitpoints < 1 || this.Y > 445)
             {
@@ -299,17 +311,17 @@ namespace planes
 
             foreach (Bullet b in bullets)
                 b.Draw(theSpriteBatch);
-            //foreach (Bomb b in bombs)
-            //    b.Draw(theSpriteBatch);
+            foreach (Bomb b in bombs)
+                b.Draw(theSpriteBatch);
 
-            //foreach (Powerup p in healthPowerups)
-            //    p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
-            //foreach (Powerup p in ammoPowerups)
-            //    p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
+            foreach (Powerup p in healthPowerups)
+                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
+            foreach (Powerup p in ammoPowerups)
+                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
 
-            //theSpriteBatch.Draw(bombTexture, new Vector2(700, 326), Color.White);
-            //theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(748, 323), Color.Black);
-            //theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(746, 323), Color.LightGray);
+            theSpriteBatch.Draw(bombTexture, new Vector2(700, 456), Color.White);
+            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(748, 447), Color.Black);
+            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(746, 447), Color.LightGray);
 
             healthBar.Draw(theSpriteBatch);
             ammoBar.Draw(theSpriteBatch);

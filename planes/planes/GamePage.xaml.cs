@@ -27,8 +27,9 @@ namespace planes
 
         EnemyHandler enemyHandler;
         IntersectionHandler intersectionHandler;
+        PowerupHandler powerupHandler;
 
-        bool soundMuted = false;
+        bool soundMuted = true;
 
         public GamePage()
         {
@@ -47,6 +48,7 @@ namespace planes
             background = new Background();
             enemyHandler = new EnemyHandler(player, background);
             intersectionHandler = new IntersectionHandler();
+            powerupHandler = new PowerupHandler();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -88,11 +90,17 @@ namespace planes
             // TODO: Add your update logic here
             intersectionHandler.HandleBulletIntersections(enemyHandler, player, contentManager);
 
-            if (player.IsAlive) 
+            if (player.IsAlive)
+            {
                 intersectionHandler.HandlePlanesInterestion(enemyHandler, player);
+                intersectionHandler.HandlePowerupIntersections(powerupHandler, player);
+            }
+
+
+            powerupHandler.Animate(timer, player);
 
             player.Update(timer, soundMuted);
-            enemyHandler.Update(timer, contentManager, player, soundMuted);
+            enemyHandler.Update(timer, contentManager, powerupHandler, player, soundMuted);
             background.Scroll((float)timer.UpdateInterval.TotalSeconds, player);
         }
 
@@ -103,11 +111,11 @@ namespace planes
         {
             SharedGraphicsDeviceManager.Current.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             spriteBatch.Begin();
             background.Draw(spriteBatch);
             player.Draw(spriteBatch);
             enemyHandler.DrawEnemies(spriteBatch);
+            powerupHandler.Draw(spriteBatch);
             spriteBatch.End();
         }
     }

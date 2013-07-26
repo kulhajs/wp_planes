@@ -38,7 +38,7 @@ namespace planes
             background = b;
         }
 
-        public void Update(GameTimer timer, ContentManager theContentManager/*, PowerupHandler pu*/, Player player, bool soundMuted)
+        public void Update(GameTimer timer, ContentManager theContentManager, PowerupHandler pu, Player player, bool soundMuted)
         {
             enemiesInLevel = (background.Period + 1) * 3;
 
@@ -65,7 +65,7 @@ namespace planes
                     visibleEnemies.Remove(e);
                     break;
                 }
-                e.Update(timer/*, pu*/, theContentManager, player, soundMuted);
+                e.Update(timer, pu, theContentManager, player, soundMuted);
             }
         }
 

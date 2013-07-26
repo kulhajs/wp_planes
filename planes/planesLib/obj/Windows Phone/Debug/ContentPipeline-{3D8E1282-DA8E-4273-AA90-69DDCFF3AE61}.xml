@@ -91,6 +91,33 @@
       <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\healthbar.xnb</Output>
       <Time>2013-07-26T19:56:45.8955749+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\health.png</Source>
+      <Name>Images\health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\health.xnb</Output>
+      <Time>2013-07-26T20:42:48.2942968+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\ten.png</Source>
+      <Name>Images\ten</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\ten.xnb</Output>
+      <Time>2013-07-26T21:03:15.2678541+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\font.spritefont</Source>
+      <Name>Fonts\font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Fonts\font.xnb</Output>
+      <Time>2013-07-26T21:50:01.6052278+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{3D8E1282-DA8E-4273-AA90-69DDCFF3AE61}</ContentProjectGUID>
