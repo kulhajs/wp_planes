@@ -25,6 +25,11 @@ namespace planes
 
         Background background;
 
+        EnemyHandler enemyHandler;
+        IntersectionHandler intersectionHandler;
+
+        bool soundMuted = false;
+
         public GamePage()
         {
             InitializeComponent();
@@ -40,6 +45,8 @@ namespace planes
 
             player = new Player();
             background = new Background();
+            enemyHandler = new EnemyHandler(player, background);
+            intersectionHandler = new IntersectionHandler();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -52,6 +59,7 @@ namespace planes
 
             // TODO: use this.content to load your game content here
             player.LoadContent(contentManager);
+            enemyHandler.CreateEnemies(contentManager);
             background.LoadContent(contentManager);
 
             // Start the timer
@@ -78,8 +86,14 @@ namespace planes
         private void OnUpdate(object sender, GameTimerEventArgs e)
         {
             // TODO: Add your update logic here
-            player.Update();
-            background.Scroll((float)timer.UpdateInterval.TotalSeconds/*, player*/);
+            intersectionHandler.HandleBulletIntersections(enemyHandler, player, contentManager);
+
+            if (player.IsAlive) 
+                intersectionHandler.HandlePlanesInterestion(enemyHandler, player);
+
+            player.Update(timer, soundMuted);
+            enemyHandler.Update(timer, contentManager, player, soundMuted);
+            background.Scroll((float)timer.UpdateInterval.TotalSeconds, player);
         }
 
         /// <summary>
@@ -93,6 +107,7 @@ namespace planes
             spriteBatch.Begin();
             background.Draw(spriteBatch);
             player.Draw(spriteBatch);
+            enemyHandler.DrawEnemies(spriteBatch);
             spriteBatch.End();
         }
     }

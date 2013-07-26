@@ -4,3 +4,6 @@ Content\Images\planes.xnb
 Content\Images\ammo.xnb
 Content\Images\bomb.xnb
 Content\Images\bullet.xnb
+Content\Sounds\browning.xnb
+Content\Images\explosion.xnb
+Content\Sounds\explosion.xnb

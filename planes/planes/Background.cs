@@ -22,7 +22,7 @@ namespace planes
         int period = 0;
 
         //Song backgroundSong;
-        //SpriteFont font;
+        //SpriteFont font; 
 
         public Texture2D background;
 
@@ -71,9 +71,9 @@ namespace planes
         //    MediaPlayer.Resume();
         //}
 
-        public void Scroll(float theGameTime /*,  Player p */)
+        public void Scroll(float theGameTime,  Player p )
         {
-            //if (p.IsAlive)
+            if (p.IsAlive)
                 this.X += direction * velocity * theGameTime;
 
             #region END_OF_TEXTURE_CHECK

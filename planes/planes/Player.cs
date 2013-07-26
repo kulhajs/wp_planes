@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Devices.Sensors;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace planes
 {
@@ -22,23 +23,24 @@ namespace planes
         int maxAmmo = 2800;
         const int maxBombs = 2;
 
-        //float reloadTime = 0;
+        float reloadTime = 0;
 
-        //SoundEffect browning;
+        SoundEffect browning;
         //SoundEffect mg;
 
         //SpriteFont font;
         //Texture2D bombTexture;
 
         Accelerometer accelerometer;
+        TouchCollection tc;
 
         //Bar healthBar;
         //Bar ammoBar;
         //public ScoreHandler score;
 
-        //public ExplosionHandler eh = new ExplosionHandler();
+        public ExplosionHandler eh = new ExplosionHandler();
 
-        //public List<Bullet> bullets = new List<Bullet>();
+        public List<Bullet> bullets = new List<Bullet>();
         //public List<Bomb> bombs = new List<Bomb>();
         //public List<Powerup> healthPowerups = new List<Powerup>();
         //public List<Powerup> ammoPowerups = new List<Powerup>();
@@ -92,6 +94,8 @@ namespace planes
 
         public bool Crash { get; set; }
 
+        private bool fireTouch = false;
+
         public int W {
             get { return w; }
         } 
@@ -106,7 +110,7 @@ namespace planes
         public void LoadContent(ContentManager theContentManager)
         {
             this.contentManager = theContentManager;
-            //browning = contentManager.Load<SoundEffect>("Sounds/browning");
+            browning = contentManager.Load<SoundEffect>("Sounds/browning");
             //mg = contentManager.Load<SoundEffect>("Sounds/mg");
             //healthBar.LoadContent(contentManager);
             //ammoBar.LoadContent(contentManager);
@@ -157,23 +161,33 @@ namespace planes
 
         private void accelerometer_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
-            //if (this.IsAlive)
+            if (this.IsAlive)
                 this.Rotation = e.SensorReading.Acceleration.Y;
         }
 
 
-        public void Update(/*GameTime theGameTime, KeyboardState currentKeyboardState, KeyboardState oldKeyboardState, bool soundMuted*/)
+        public void Update(GameTimer timer, bool soundMuted)
         {
+            fireTouch = false;
+            tc = TouchPanel.GetState();
+            if (tc.Count > 0)
+                foreach (TouchLocation tl in tc)
+                    if (tl.Position.X > 300)
+                    {
+                        fireTouch = true;
+                        break;
+                    }
+
             if (!this.IsAlive && !explosionCreated && !this.Crash)
             {
-                //eh.CreateExplosion("normal", this.Position, contentManager);
-                //explosionCreated = true;
+                eh.CreateExplosion("normal", this.Position, contentManager);
+                explosionCreated = true;
                 //this.score.SaveScore();
             }
             else if (!this.IsAlive && !explosionCreated && this.Crash)
             {
-                //eh.CreateExplosion("huge", new Vector2(this.X - 32, this.Y - 32), contentManager);
-                //explosionCreated = true;
+                eh.CreateExplosion("huge", new Vector2(this.X - 32, this.Y - 64), contentManager);
+                explosionCreated = true;
                 //this.score.SaveScore();
             }
             else if (this.IsAlive)
@@ -181,17 +195,17 @@ namespace planes
                 if (this.Y < 0)
                     this.Rotation *= -1f;
 
-                //if (currentKeyboardState.IsKeyDown(Keys.Space) && reloadTime == 0 && this.Ammo > 0)
-                //{
-                //    Vector2 direction = new Vector2((float)Math.Cos((double)(this.Rotation)), (float)Math.Sin((double)(this.Rotation)));
-                //    direction.Normalize();
-                //    Bullet newBullet = new Bullet(new Vector2(this.X + 2, this.Y + 3), direction, this.Rotation);
-                //    newBullet.LoadContent(contentManager);
-                //    bullets.Add(newBullet);
-                //    if (!soundMuted)
-                //        browning.Play(0.05f, 0, 0);
-                //    this.Ammo -= 1;
-                //}
+                if (fireTouch && reloadTime == 0 && this.Ammo > 0)
+                {
+                    Vector2 direction = new Vector2((float)Math.Cos((double)(this.Rotation)), (float)Math.Sin((double)(this.Rotation)));
+                    direction.Normalize();
+                    Bullet newBullet = new Bullet(new Vector2(this.X + 2, this.Y + 3), direction, this.Rotation);
+                    newBullet.LoadContent(contentManager);
+                    bullets.Add(newBullet);
+                    if (!soundMuted)
+                        browning.Play(0.5f, 0, 0);
+                    this.Ammo -= 1;
+                }
                 //else if (currentKeyboardState.IsKeyDown(Keys.LeftControl) && !oldKeyboardState.IsKeyDown(Keys.LeftControl) && this.AvailibleBombs > 0)
                 //{
                 //    Bomb newBomb = new Bomb(this.Position);
@@ -217,9 +231,9 @@ namespace planes
                 //    this.ammoPowerups.RemoveAt(ammoPowerups.Count - 1);
                 //}
 
-                //reloadTime += (float)theGameTime.ElapsedGameTime.TotalSeconds;
-                //if (reloadTime > 0.05f)
-                //    reloadTime = 0;
+                reloadTime += (float)timer.UpdateInterval.TotalSeconds; //theGameTime.ElapsedGameTime.TotalSeconds;
+                if (reloadTime > 0.05f)
+                    reloadTime = 0;
 
                 this.Y += 5f * this.Rotation;
 
@@ -229,15 +243,15 @@ namespace planes
                 this.Animate();
             }
 
-            //foreach (Bullet b in bullets)
-            //{
-            //    b.Update(theGameTime);
-            //    if (b.Position.X - this.Position.X > 700)
-            //    {
-            //        bullets.Remove(b);
-            //        break;
-            //    }
-            //}
+            foreach (Bullet b in bullets)
+            {
+                b.Update(timer);
+                if (b.Position.X - this.Position.X > 700)
+                {
+                    bullets.Remove(b);
+                    break;
+                }
+            }
 
             //foreach (Bomb b in bombs)
             //{
@@ -250,10 +264,15 @@ namespace planes
             //    }
             //}
 
-            //eh.Update(theGameTime, this.IsAlive, soundMuted); //if palyer dies background stops so explosion can't move away, on the other hand when bomb lands explosion has to go off the screen
+            eh.Update(timer, this.IsAlive, soundMuted); //if palyer dies background stops so explosion can't move away, on the other hand when bomb lands explosion has to go off the screen
 
-            //if (this.Hitpoints < 1)
-            //    this.IsAlive = false;
+            if (this.Hitpoints < 1 || this.Y > 445)
+            {
+                this.IsAlive = false;
+
+                if (this.Y > 445)
+                    this.Crash = true;
+            }
         }
 
         private void Animate()
@@ -273,13 +292,13 @@ namespace planes
 
         public void Draw(SpriteBatch theSpriteBatch)
         {
-            //if (IsAlive)
+            if (IsAlive)
                 base.Draw(theSpriteBatch, new Vector2(w / 2, h / 2), this.Position, this.Color, this.Rotation);
 
-            //eh.Draw(theSpriteBatch);
+            eh.Draw(theSpriteBatch);
 
-            //foreach (Bullet b in bullets)
-            //    b.Draw(theSpriteBatch);
+                foreach (Bullet b in bullets)
+                    b.Draw(theSpriteBatch);
             //foreach (Bomb b in bombs)
             //    b.Draw(theSpriteBatch);
 
