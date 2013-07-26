@@ -147,47 +147,47 @@ namespace planes
                 }
         }
 
-        //public void HandleBuildingIntersection(Player p, BuildingHandler bh)
-        //{
-        //    playerRectangle = new Rectangle((int)p.X + p.W / 2, (int)p.Y + p.H / 4, p.W / 4, p.H / 2);
-        //    foreach (Building b in bh.buildings)
-        //    {
-        //        buildingRectangle = new Rectangle((int)b.X + 5, (int)b.Y - b.H + 10, b.W - 10, b.H);
-        //        if (playerRectangle.Intersects(buildingRectangle))
-        //        {
-        //            b.Damaged = true;
-        //            p.Hitpoints = 0;
-        //            p.Crash = true;
-        //        }
-        //    }
-        //}
+        public void HandleBuildingIntersection(Player p, BuildingHandler bh)
+        {
+            playerRectangle = new Rectangle((int)p.X + p.W / 2, (int)p.Y + p.H / 4, p.W / 4, p.H / 2);
+            foreach (Building b in bh.buildings)
+            {
+                buildingRectangle = new Rectangle((int)b.X + 5, (int)b.Y - b.H + 10, b.W - 10, b.H);
+                if (playerRectangle.Intersects(buildingRectangle))
+                {
+                    b.Damaged = true;
+                    p.Hitpoints = 0;
+                    p.Crash = true;
+                }
+            }
+        }
 
-        //public void HandleBombsIntersection(Player p, BuildingHandler bh, ContentManager theContentManager)
-        //{
-        //    if (p.bombs.Count > 0)
-        //    {
-        //        foreach (Bomb b in p.bombs)
-        //        {
-        //            bombRectangle = new Rectangle((int)b.X, (int)b.Y, 20, 20); //TODO: width, height if needed
-        //            foreach (Building building in bh.buildings)
-        //            {
-        //                buildingRectangle = new Rectangle((int)building.X, (int)building.Y - building.H + 10, building.W, building.H);
-        //                if (bombRectangle.Intersects(buildingRectangle))
-        //                {
-        //                    building.Damaged = true;
-        //                    p.score.AddPoints(50);
-        //                    p.eh.CreateExplosion("huge", new Vector2(b.X - 48, b.Y - 16), theContentManager);
-        //                    p.bombs.Remove(b);
-        //                    bombRemoved = true;
-        //                }
-        //            }
-        //            if (bombRemoved)
-        //            {
-        //                bombRemoved = false;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
+        public void HandleBombsIntersection(Player p, BuildingHandler bh, ContentManager theContentManager)
+        {
+            if (p.bombs.Count > 0)
+            {
+                foreach (Bomb b in p.bombs)
+                {
+                    bombRectangle = new Rectangle((int)b.X, (int)b.Y, 20, 20); //TODO: width, height if needed
+                    foreach (Building building in bh.buildings)
+                    {
+                        buildingRectangle = new Rectangle((int)building.X, (int)building.Y - building.H + 10, building.W, building.H);
+                        if (bombRectangle.Intersects(buildingRectangle))
+                        {
+                            building.Damaged = true;
+                            //p.score.AddPoints(50);
+                            p.eh.CreateExplosion("huge", new Vector2(b.X - 48, b.Y - 16), theContentManager);
+                            p.bombs.Remove(b);
+                            bombRemoved = true;
+                        }
+                    }
+                    if (bombRemoved)
+                    {
+                        bombRemoved = false;
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

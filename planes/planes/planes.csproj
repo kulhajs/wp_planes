@@ -70,6 +70,8 @@
     <Compile Include="Background.cs" />
     <Compile Include="Bar.cs" />
     <Compile Include="Bomb.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="BuildingHandler.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyHandler.cs" />
@@ -114,7 +116,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="splashscreen.jpg" />
+    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\planesLib\planesLib.csproj">

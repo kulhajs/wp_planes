@@ -118,6 +118,24 @@
       <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Fonts\font.xnb</Output>
       <Time>2013-07-26T21:50:01.6052278+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Buildings\church.png</Source>
+      <Name>Images\Buildings\church</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Buildings\church.xnb</Output>
+      <Time>2013-07-26T22:25:21.5364464+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Buildings\house.png</Source>
+      <Name>Images\Buildings\house</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Buildings\house.xnb</Output>
+      <Time>2013-07-26T22:25:21.5314452+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{3D8E1282-DA8E-4273-AA90-69DDCFF3AE61}</ContentProjectGUID>

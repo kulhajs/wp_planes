@@ -39,8 +39,6 @@ namespace planes
             fill = contentManager.Load<Texture2D>("Images/healthbar");
         }
 
-        //public void Update(GameTime theGameTime);
-
         public void Draw(SpriteBatch theSpriteBatch)
         {
             theSpriteBatch.Draw(fill, new Rectangle((int)X, (int)Y, this.FilledWidth, h), new Rectangle(0, h, w, h), this.color, 0.0f, Vector2.Zero, SpriteEffects.None, 0.0f);

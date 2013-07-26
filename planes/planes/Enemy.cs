@@ -29,7 +29,6 @@ namespace planes
         float reloadTime = 0;
 
 
-        //SoundEffect browning;
         //SoundEffect mg;
 
         public ExplosionHandler explosionHandler = new ExplosionHandler();

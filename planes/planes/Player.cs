@@ -26,7 +26,6 @@ namespace planes
         float reloadTime = 0;
 
         SoundEffect browning;
-        //SoundEffect mg;
 
         SpriteFont font;
         Texture2D bombTexture;
@@ -60,7 +59,7 @@ namespace planes
 
         public Player()
         {
-            this.Position = new Vector2(100, 157);
+            this.Position = new Vector2(125, 200);
             this.Color = Color.White;
             this.Rotation = 0.0f;
             this.IsAlive = true;
@@ -115,7 +114,6 @@ namespace planes
         {
             this.contentManager = theContentManager;
             browning = contentManager.Load<SoundEffect>("Sounds/browning");
-            //mg = contentManager.Load<SoundEffect>("Sounds/mg");
             healthBar.LoadContent(contentManager);
             ammoBar.LoadContent(contentManager);
             //score.LoadContent(contentManager);

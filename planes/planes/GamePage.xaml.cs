@@ -21,12 +21,15 @@ namespace planes
         GameTimer timer;
         SpriteBatch spriteBatch;
 
+        Random random = new Random();
+
         Player player;
 
         Background background;
 
         EnemyHandler enemyHandler;
         IntersectionHandler intersectionHandler;
+        BuildingHandler buildingHandler;
         PowerupHandler powerupHandler;
 
         bool soundMuted = true;
@@ -48,6 +51,7 @@ namespace planes
             background = new Background();
             enemyHandler = new EnemyHandler(player, background);
             intersectionHandler = new IntersectionHandler();
+            buildingHandler = new BuildingHandler();
             powerupHandler = new PowerupHandler();
         }
 
@@ -87,13 +91,27 @@ namespace planes
         /// </summary>
         private void OnUpdate(object sender, GameTimerEventArgs e)
         {
-            // TODO: Add your update logic here
             intersectionHandler.HandleBulletIntersections(enemyHandler, player, contentManager);
+            intersectionHandler.HandleBombsIntersection(player, buildingHandler, contentManager);
 
             if (player.IsAlive)
             {
                 intersectionHandler.HandlePlanesInterestion(enemyHandler, player);
                 intersectionHandler.HandlePowerupIntersections(powerupHandler, player);
+                intersectionHandler.HandleBuildingIntersection(player, buildingHandler);
+
+                if (random.Next(7500) == 1337)
+                {
+                    buildingHandler.CreateBuilding("house", contentManager);
+                }
+                if(random.Next(7500) == 42)
+                    {
+                        buildingHandler.CreateBuilding("church", contentManager);
+                }
+                if(buildingHandler.buildings.Count > 0)
+                {
+                    buildingHandler.UpdateBuildings(timer, player);
+                }
             }
 
 
@@ -113,6 +131,7 @@ namespace planes
 
             spriteBatch.Begin();
             background.Draw(spriteBatch);
+            buildingHandler.DrawBuildings(spriteBatch);
             player.Draw(spriteBatch);
             enemyHandler.DrawEnemies(spriteBatch);
             powerupHandler.Draw(spriteBatch);
