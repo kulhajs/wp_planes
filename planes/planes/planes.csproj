@@ -89,6 +89,7 @@
     <Compile Include="PowerupHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppServiceProvider.cs" />
+    <Compile Include="ScoreHandler.cs" />
     <Compile Include="Sprite.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ namespace planes
 
         Bar healthBar;
         Bar ammoBar;
-        //public ScoreHandler score;
+        public ScoreHandler score;
 
         public ExplosionHandler eh = new ExplosionHandler();
 
@@ -70,7 +70,7 @@ namespace planes
             this.AvailibleBombs = maxBombs;
             healthBar = new Bar(Color.Red, new Vector2(25, 448));
             ammoBar = new Bar(Color.Gold, new Vector2(25, 458));
-            //score = new ScoreHandler();
+            score = new ScoreHandler();
 
             accelerometer = new Accelerometer();
             accelerometer.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(accelerometer_CurrentValueChanged);
@@ -116,7 +116,7 @@ namespace planes
             browning = contentManager.Load<SoundEffect>("Sounds/browning");
             healthBar.LoadContent(contentManager);
             ammoBar.LoadContent(contentManager);
-            //score.LoadContent(contentManager);
+            score.LoadContent(contentManager);
 
             font = contentManager.Load<SpriteFont>("Fonts/font");
             bombTexture = contentManager.Load<Texture2D>("Images/bomb");
@@ -302,6 +302,12 @@ namespace planes
 
         public void Draw(SpriteBatch theSpriteBatch)
         {
+
+            foreach (Powerup p in healthPowerups)
+                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
+            foreach (Powerup p in ammoPowerups)
+                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
+
             if (IsAlive)
                 base.Draw(theSpriteBatch, new Vector2(w / 2, h / 2), this.Position, this.Color, this.Rotation);
 
@@ -312,18 +318,13 @@ namespace planes
             foreach (Bomb b in bombs)
                 b.Draw(theSpriteBatch);
 
-            foreach (Powerup p in healthPowerups)
-                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
-            foreach (Powerup p in ammoPowerups)
-                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
-
             theSpriteBatch.Draw(bombTexture, new Vector2(700, 456), Color.White);
             theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(748, 447), Color.Black);
             theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(746, 447), Color.LightGray);
 
             healthBar.Draw(theSpriteBatch);
             ammoBar.Draw(theSpriteBatch);
-            //score.DrawScore(theSpriteBatch);
+            score.DrawScore(theSpriteBatch);
         }
 
     }

@@ -55,8 +55,8 @@ namespace planes
             {
                 if (e.Position.X < player.Position.X - 50)
                 {
-                    //if (e.IsAlive && player.IsAlive)
-                    //    player.score.AddPoints(-5);
+                    if (e.IsAlive && player.IsAlive)
+                        player.score.AddPoints(-5);
                     e.IsAlive = true;
                     e.Hitpoints = maxHealth;
                     e.ExplosionCreated = false;

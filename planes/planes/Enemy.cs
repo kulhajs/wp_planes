@@ -96,7 +96,7 @@ namespace planes
                 this.IsAlive = false;
                 explosionHandler.CreateExplosion("normal", new Vector2(this.X - 47, this.Y - 87), contentManager);
                 this.ExplosionCreated = true;
-                //player.score.AddPoints(10);
+                player.score.AddPoints(10);
             }
             
             if (this.IsAlive &&  reloadTime == 0 && random.Next(this.Hitpoints / 2 + 1) == 1)

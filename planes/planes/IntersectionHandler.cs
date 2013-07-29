@@ -60,8 +60,8 @@ namespace planes
                             if (player.ammoPowerups.Count < 5)
                             {
                                 p.Source = new Rectangle(0, 0, p.W, p.H);
-                                p.Position = new Vector2(106 + player.ammoPowerups.Count * 18, 335);
-                                p.Scale = 0.75f;
+                                p.Position = new Vector2(740 - player.ammoPowerups.Count * 40, 20); //TODO: test behavior on higher resolution if the game scales correctly
+                                p.Scale = 2f;
                                 player.ammoPowerups.Add(p);
                             }
                             else
@@ -70,7 +70,7 @@ namespace planes
                     }
                     else if (p.Type == "ten")
                     {
-                        //player.score.AddPoints(10);
+                        player.score.AddPoints(10);
                     }
                     else if (p.Type == "bomb" && player.AvailibleBombs + 1 <= 2)
                     {
@@ -175,7 +175,7 @@ namespace planes
                         if (bombRectangle.Intersects(buildingRectangle))
                         {
                             building.Damaged = true;
-                            //p.score.AddPoints(50);
+                            p.score.AddPoints(50);
                             p.eh.CreateExplosion("huge", new Vector2(b.X - 48, b.Y - 16), theContentManager);
                             p.bombs.Remove(b);
                             bombRemoved = true;
