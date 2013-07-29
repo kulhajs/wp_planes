@@ -71,10 +71,10 @@ namespace planes
         //    MediaPlayer.Resume();
         //}
 
-        public void Scroll(float theGameTime,  Player p )
+        public void Scroll(GameTimer timer,  Player p )
         {
             if (p.IsAlive)
-                this.X += direction * velocity * theGameTime;
+                this.X += direction * velocity * (float)timer.UpdateInterval.TotalSeconds;
 
             #region END_OF_TEXTURE_CHECK
             if (this.X % background.Width < 0 && this.X % background.Width > -5f && !textureChanged)

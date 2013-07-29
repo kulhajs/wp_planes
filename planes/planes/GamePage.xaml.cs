@@ -26,6 +26,7 @@ namespace planes
         Player player;
 
         Background background;
+        Clouds clouds;
 
         EnemyHandler enemyHandler;
         IntersectionHandler intersectionHandler;
@@ -49,6 +50,7 @@ namespace planes
 
             player = new Player();
             background = new Background();
+            clouds = new Clouds();
             enemyHandler = new EnemyHandler(player, background);
             intersectionHandler = new IntersectionHandler();
             buildingHandler = new BuildingHandler();
@@ -67,6 +69,7 @@ namespace planes
             player.LoadContent(contentManager);
             enemyHandler.CreateEnemies(contentManager);
             background.LoadContent(contentManager);
+            clouds.LoadContent(contentManager);
 
             // Start the timer
             timer.Start();
@@ -119,7 +122,8 @@ namespace planes
 
             player.Update(timer, soundMuted);
             enemyHandler.Update(timer, contentManager, powerupHandler, player, soundMuted);
-            background.Scroll((float)timer.UpdateInterval.TotalSeconds, player);
+            background.Scroll(timer, player);
+            clouds.Scroll(timer, player);
         }
 
         /// <summary>
@@ -134,6 +138,7 @@ namespace planes
             buildingHandler.DrawBuildings(spriteBatch);
             player.Draw(spriteBatch);
             enemyHandler.DrawEnemies(spriteBatch);
+            clouds.Draw(spriteBatch);
             powerupHandler.Draw(spriteBatch);
             spriteBatch.End();
         }

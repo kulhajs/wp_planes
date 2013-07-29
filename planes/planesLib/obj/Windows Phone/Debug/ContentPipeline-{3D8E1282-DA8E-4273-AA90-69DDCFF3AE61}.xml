@@ -136,6 +136,24 @@
       <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Buildings\house.xnb</Output>
       <Time>2013-07-26T22:25:21.5314452+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Backgrounds\clouds_night.png</Source>
+      <Name>Images\Backgrounds\clouds_night</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\clouds_night.xnb</Output>
+      <Time>2013-07-29T22:43:07.943528+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Backgrounds\clouds_day.png</Source>
+      <Name>Images\Backgrounds\clouds_day</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\clouds_day.xnb</Output>
+      <Time>2013-07-29T22:59:07.1276726+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{3D8E1282-DA8E-4273-AA90-69DDCFF3AE61}</ContentProjectGUID>

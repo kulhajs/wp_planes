@@ -29,3 +29,5 @@ C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Fonts\font.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Buildings\church.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Buildings\house.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\clouds_night.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\clouds_day.xnb
