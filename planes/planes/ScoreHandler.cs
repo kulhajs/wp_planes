@@ -104,8 +104,8 @@ namespace planes
 
         public void DrawScore(SpriteBatch theSpriteBacth)
         {
-            theSpriteBacth.DrawString(font, string.Format("Score: {0}", this.score), new Vector2(12, 10), Color.Black);
-            theSpriteBacth.DrawString(font, string.Format("Score: {0}", this.score), new Vector2(10, 10), Color.LightGray);
+            theSpriteBacth.DrawString(font, string.Format("Score: {0}", this.score), new Vector2(602, 4), Color.Black);
+            theSpriteBacth.DrawString(font, string.Format("Score: {0}", this.score), new Vector2(600, 4), Color.LightGray);
         }
     }
 }

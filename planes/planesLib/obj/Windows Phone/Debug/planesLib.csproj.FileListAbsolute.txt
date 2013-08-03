@@ -1,6 +1,5 @@
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\planesLib.dll
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\planesLib.pdb
-C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debug\planesLib.csprojResolveAssemblyReference.cache
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debug\planesLib.dll
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\obj\Windows Phone\Debug\planesLib.pdb
@@ -21,3 +20,4 @@ C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debu
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Buildings\house.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\clouds_night.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\Backgrounds\clouds_day.xnb
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\ammo.png

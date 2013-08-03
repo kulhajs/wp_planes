@@ -68,8 +68,8 @@ namespace planes
 
 
             this.AvailibleBombs = maxBombs;
-            healthBar = new Bar(Color.Red, new Vector2(25, 448));
-            ammoBar = new Bar(Color.Gold, new Vector2(25, 458));
+            healthBar = new Bar(Color.Red, new Vector2(25, 10));
+            ammoBar = new Bar(Color.Gold, new Vector2(25, 20));
             score = new ScoreHandler();
 
             accelerometer = new Accelerometer();
@@ -98,6 +98,14 @@ namespace planes
         private bool currentBombTouch = false;
 
         private bool oldBombTouch = false;
+
+        private bool currentHealthPowerupTouch = false;
+
+        private bool oldHealthPowerupTouch = false;
+
+        private bool currentAmmoPowerupTouch = false;
+
+        private bool oldAmmoPowerupTouch = false;
 
         public int W {
             get { return w; }
@@ -172,17 +180,28 @@ namespace planes
         {
             fireTouch = false;
             currentBombTouch = false;
+            currentHealthPowerupTouch = false;
+            currentAmmoPowerupTouch = false;
+
             tc = TouchPanel.GetState();
             if (tc.Count > 0)
                 foreach (TouchLocation tl in tc)
                 {
-                    if (tl.Position.X > 300)
+                    if (tl.Position.X > 650 && tl.Position.Y > 350)
                     {
                         fireTouch = true;
                     } 
-                    else if(tl.Position.X < 150 && tl.Position.Y > 240 && !currentBombTouch)
+                    else if(tl.Position.X < 150 && tl.Position.Y > 350 && !currentBombTouch)
                     {
                         currentBombTouch = true;
+                    }
+                    else if ((tl.Position.X > 150 && tl.Position.X < 182) && (tl.Position.Y > 438 && tl.Position.Y < 470) && !currentHealthPowerupTouch)
+                    {
+                        currentHealthPowerupTouch = true;
+                    }
+                    else if ((tl.Position.X > 618 && tl.Position.X < 650) && (tl.Position.Y > 438 && tl.Position.Y < 470) && !currentAmmoPowerupTouch)
+                    {
+                        currentAmmoPowerupTouch = true;
                     }
                 }
 
@@ -212,7 +231,7 @@ namespace planes
                     bullets.Add(newBullet);
                     if (!soundMuted)
                         browning.Play(0.5f, 0, 0);
-                    this.Ammo -= 1;
+                    //this.Ammo -= 1;
                 }
                 else if (currentBombTouch && !oldBombTouch && this.AvailibleBombs > 0)
                 {
@@ -222,22 +241,22 @@ namespace planes
                     AvailibleBombs--;
                 }
 
-                //if (currentKeyboardState.IsKeyDown(Keys.A) && !oldKeyboardState.IsKeyDown(Keys.A) && this.healthPowerups.Count > 0)
-                //{
-                //    if (this.Hitpoints + 5 < this.MaxHealth)
-                //        this.Hitpoints += 5;
-                //    else
-                //        this.Hitpoints = this.MaxHealth;
-                //    this.healthPowerups.RemoveAt(healthPowerups.Count - 1);
-                //}
-                //if (currentKeyboardState.IsKeyDown(Keys.S) && !oldKeyboardState.IsKeyDown(Keys.S) && this.ammoPowerups.Count > 0)
-                //{
-                //    if (this.Ammo + 50 < this.MaxAmmo)
-                //        this.Ammo += 50;
-                //    else
-                //        this.Ammo = this.MaxAmmo;
-                //    this.ammoPowerups.RemoveAt(ammoPowerups.Count - 1);
-                //}
+                if (currentHealthPowerupTouch && !oldHealthPowerupTouch && this.healthPowerups.Count > 0)
+                {
+                    if (this.Hitpoints + 5 < this.MaxHealth)
+                        this.Hitpoints += 5;
+                    else
+                        this.Hitpoints = this.MaxHealth;
+                    this.healthPowerups.RemoveAt(healthPowerups.Count - 1);
+                }
+                if (currentAmmoPowerupTouch && !oldAmmoPowerupTouch && this.ammoPowerups.Count > 0)
+                {
+                    if (this.Ammo + 50 < this.MaxAmmo)
+                        this.Ammo += 50;
+                    else
+                        this.Ammo = this.MaxAmmo;
+                    this.ammoPowerups.RemoveAt(ammoPowerups.Count - 1);
+                }
 
                 reloadTime += (float)timer.UpdateInterval.TotalSeconds; //theGameTime.ElapsedGameTime.TotalSeconds;
                 if (reloadTime > 0.05f)
@@ -276,6 +295,10 @@ namespace planes
 
             oldBombTouch = currentBombTouch;
 
+            oldAmmoPowerupTouch = currentAmmoPowerupTouch;
+
+            oldHealthPowerupTouch = currentHealthPowerupTouch;
+
             if (this.Hitpoints < 1 || this.Y > 445)
             {
                 this.IsAlive = false;
@@ -302,14 +325,24 @@ namespace planes
 
         public void Draw(SpriteBatch theSpriteBatch)
         {
+            if(healthPowerups.Count > 0)
+            {
+                healthPowerups[0].Draw(theSpriteBatch, Vector2.Zero, healthPowerups[0].Position, Color.White, 0.0f);
+                theSpriteBatch.DrawString(font, string.Format("x {0}", this.healthPowerups.Count), new Vector2(190, 450), Color.Black);
+                theSpriteBatch.DrawString(font, string.Format("x {0}", this.healthPowerups.Count), new Vector2(188, 450), Color.Red);
+            }
 
-            foreach (Powerup p in healthPowerups)
-                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
-            foreach (Powerup p in ammoPowerups)
-                p.Draw(theSpriteBatch, Vector2.Zero, p.Position, Color.White, 0.0f);
+            if(ammoPowerups.Count > 0)
+            {
+                ammoPowerups[0].Draw(theSpriteBatch, Vector2.Zero, ammoPowerups[0].Position, Color.White, 0.0f);
+                theSpriteBatch.DrawString(font, string.Format("x {0}", this.ammoPowerups.Count), new Vector2(592, 450), Color.Black);
+                theSpriteBatch.DrawString(font, string.Format("x {0}", this.ammoPowerups.Count), new Vector2(590, 450), Color.Gold);
+            }
 
             if (IsAlive)
-                base.Draw(theSpriteBatch, new Vector2(w / 2, h / 2), this.Position, this.Color, this.Rotation);
+            {
+                base.Draw(theSpriteBatch, new Vector2(w / 2, h / 2), this.Position, this.Color, this.Rotation);   
+            }
 
             eh.Draw(theSpriteBatch);
 
@@ -318,9 +351,9 @@ namespace planes
             foreach (Bomb b in bombs)
                 b.Draw(theSpriteBatch);
 
-            theSpriteBatch.Draw(bombTexture, new Vector2(700, 456), Color.White);
-            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(748, 447), Color.Black);
-            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(746, 447), Color.LightGray);
+            theSpriteBatch.Draw(bombTexture, new Vector2(118, 13), Color.White);
+            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(166, 4), Color.Black);
+            theSpriteBatch.DrawString(font, string.Format("x {0}", this.AvailibleBombs), new Vector2(164, 4), Color.LightGray);
 
             healthBar.Draw(theSpriteBatch);
             ammoBar.Draw(theSpriteBatch);

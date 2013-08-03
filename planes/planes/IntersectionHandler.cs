@@ -43,7 +43,7 @@ namespace planes
                             if (player.healthPowerups.Count < 5)
                             {
                                 p.Source = new Rectangle(0, 0, p.W, p.H);
-                                p.Position = new Vector2(20 + player.healthPowerups.Count * 40, 20);
+                                p.Position = new Vector2(150, 438);
                                 p.Scale = 2f;
                                 player.healthPowerups.Add(p);
                             }
@@ -59,9 +59,9 @@ namespace planes
                         {
                             if (player.ammoPowerups.Count < 5)
                             {
-                                p.Source = new Rectangle(0, 0, p.W, p.H);
-                                p.Position = new Vector2(740 - player.ammoPowerups.Count * 40, 20); //TODO: test behavior on higher resolution if the game scales correctly
-                                p.Scale = 2f;
+                                p.Source = new Rectangle(0, 16, p.W * 2, p.H * 2);
+                                p.Position = new Vector2(618, 438); //TODO: test behavior on higher resolution if the game scales correctly
+                                p.Scale = 1f;
                                 player.ammoPowerups.Add(p);
                             }
                             else
@@ -121,7 +121,7 @@ namespace planes
                     bulletRectangle = new Rectangle((int)b.X, (int)b.Y, 3, 1);
                     if (bulletRectangle.Intersects(playerRectangle))
                     {
-                        p.Hitpoints -= 1;
+                        //p.Hitpoints -= 1;
                         if (p.IsAlive)
                             e.explosionHandler.CreateExplosion("small", new Vector2(b.X - random.Next(5, 20), b.Y), contentManager);
                         e.bullets.Remove(b);

@@ -53,7 +53,7 @@ namespace planes
 
             foreach (Enemy e in visibleEnemies)
             {
-                if (e.Position.X < player.Position.X - 50)
+                if (e.Position.X < player.Position.X - 100)
                 {
                     if (e.IsAlive && player.IsAlive)
                         player.score.AddPoints(-5);
