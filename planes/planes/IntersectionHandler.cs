@@ -121,7 +121,7 @@ namespace planes
                     bulletRectangle = new Rectangle((int)b.X, (int)b.Y, 3, 1);
                     if (bulletRectangle.Intersects(playerRectangle))
                     {
-                        //p.Hitpoints -= 1;
+                        p.Hitpoints -= 1;
                         if (p.IsAlive)
                             e.explosionHandler.CreateExplosion("small", new Vector2(b.X - random.Next(5, 20), b.Y), contentManager);
                         e.bullets.Remove(b);

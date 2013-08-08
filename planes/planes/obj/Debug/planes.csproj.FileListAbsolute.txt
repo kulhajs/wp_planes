@@ -32,3 +32,4 @@ C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\clouds_night.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\Backgrounds\clouds_day.xnb
 C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\ammo.png
+C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planes\Bin\Debug\Content\Images\buttons.xnb

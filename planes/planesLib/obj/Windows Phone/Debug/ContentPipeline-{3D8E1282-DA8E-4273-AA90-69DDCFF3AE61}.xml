@@ -154,6 +154,15 @@
       <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Fonts\font.xnb</Output>
       <Time>2013-08-01T11:56:14.0710281+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\buttons.png</Source>
+      <Name>Images\buttons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Marek\SkyDrive\bin\WPdev\planes\planes\planesLib\bin\Windows Phone\Debug\Content\Images\buttons.xnb</Output>
+      <Time>2013-08-08T20:00:36.0363999+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{3D8E1282-DA8E-4273-AA90-69DDCFF3AE61}</ContentProjectGUID>

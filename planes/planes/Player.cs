@@ -19,6 +19,9 @@ namespace planes
         const int w = 68;   //plane width
         const int h = 17;   //plane height
 
+        Vector2 shootButtonPosition = new Vector2(680, 360);
+        Vector2 bombButtonPosition = new Vector2(30, 360);
+
         int maxHealth = 100;
         int maxAmmo = 2800;
         const int maxBombs = 2;
@@ -32,6 +35,9 @@ namespace planes
 
         Accelerometer accelerometer;
         TouchCollection tc;
+
+        Button shootButton;
+        Button bombButton;
 
         Bar healthBar;
         Bar ammoBar;
@@ -71,6 +77,9 @@ namespace planes
             healthBar = new Bar(Color.Red, new Vector2(25, 10));
             ammoBar = new Bar(Color.Gold, new Vector2(25, 20));
             score = new ScoreHandler();
+
+            shootButton = new Button(ButtonType.SHOOT, shootButtonPosition);
+            bombButton = new Button(ButtonType.BOMB, bombButtonPosition);
 
             accelerometer = new Accelerometer();
             accelerometer.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(accelerometer_CurrentValueChanged);
@@ -129,6 +138,9 @@ namespace planes
             font = contentManager.Load<SpriteFont>("Fonts/font");
             bombTexture = contentManager.Load<Texture2D>("Images/bomb");
 
+            shootButton.LoadContent(theContentManager);
+            bombButton.LoadContent(theContentManager);
+
             base.LoadContent(contentManager, assetName);
             this.Source = sources[0 + this.Nation];
             this.SetAnimation();
@@ -183,6 +195,9 @@ namespace planes
             currentHealthPowerupTouch = false;
             currentAmmoPowerupTouch = false;
 
+            shootButton.ButtonPressed = false;
+            bombButton.ButtonPressed = false;
+
             tc = TouchPanel.GetState();
             if (tc.Count > 0)
                 foreach (TouchLocation tl in tc)
@@ -190,10 +205,12 @@ namespace planes
                     if (tl.Position.X > 650 && tl.Position.Y > 350)
                     {
                         fireTouch = true;
+                        shootButton.ButtonPressed = true;
                     } 
                     else if(tl.Position.X < 150 && tl.Position.Y > 350 && !currentBombTouch)
                     {
                         currentBombTouch = true;
+                        bombButton.ButtonPressed = true;
                     }
                     else if ((tl.Position.X > 150 && tl.Position.X < 182) && (tl.Position.Y > 438 && tl.Position.Y < 470) && !currentHealthPowerupTouch)
                     {
@@ -231,7 +248,7 @@ namespace planes
                     bullets.Add(newBullet);
                     if (!soundMuted)
                         browning.Play(0.5f, 0, 0);
-                    //this.Ammo -= 1;
+                    this.Ammo -= 1;
                 }
                 else if (currentBombTouch && !oldBombTouch && this.AvailibleBombs > 0)
                 {
@@ -258,7 +275,7 @@ namespace planes
                     this.ammoPowerups.RemoveAt(ammoPowerups.Count - 1);
                 }
 
-                reloadTime += (float)timer.UpdateInterval.TotalSeconds; //theGameTime.ElapsedGameTime.TotalSeconds;
+                reloadTime += (float)timer.UpdateInterval.TotalSeconds;
                 if (reloadTime > 0.05f)
                     reloadTime = 0;
 
@@ -338,6 +355,9 @@ namespace planes
                 theSpriteBatch.DrawString(font, string.Format("x {0}", this.ammoPowerups.Count), new Vector2(592, 450), Color.Black);
                 theSpriteBatch.DrawString(font, string.Format("x {0}", this.ammoPowerups.Count), new Vector2(590, 450), Color.Gold);
             }
+
+            shootButton.Draw(theSpriteBatch);
+            bombButton.Draw(theSpriteBatch);
 
             if (IsAlive)
             {
